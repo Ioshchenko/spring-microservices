@@ -1,0 +1,27 @@
+version: '3'
+services:
+  registry-service:
+    image: registry-service:latest
+    container_name: registry-service
+    build: ./registry
+    ports:
+      - "8761:8761"
+      - "18787:8787"
+    networks:
+      - emp-network
+
+  inventory-service:
+    image: inventory-service:latest
+    container_name: inventory-service
+    build: ./inventory
+    ports:
+      - "9020:9020"
+      - "29797:8787"
+    networks:
+      - emp-network
+    links:
+      - registry-service:registry-service
+
+networks:
+  emp-network:
+    driver: bridge
