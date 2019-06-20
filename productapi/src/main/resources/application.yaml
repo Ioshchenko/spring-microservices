@@ -17,5 +17,5 @@ feign:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URI:http://service-registry:8761/eureka}
+      defaultZone: ${EUREKA_URI:http://registry-service:8761/eureka}
     fetch-registry: true
