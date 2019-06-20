@@ -38,6 +38,20 @@ services:
     depends_on:
       - registry-service
 
+  catalog-service:
+    image: catalog-service
+    container_name: catalog-service
+    build: ./catalog
+    ports:
+      - "9010:9010"
+      - "8784:8787"
+    networks:
+      - emp-network
+    links:
+      - registry-service:registry-service
+    depends_on:
+      - registry-service
+
 networks:
   emp-network:
     driver: bridge
