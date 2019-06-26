@@ -19,6 +19,7 @@ docker-compose up -d
 docker-compose up -d --build --force-recreate registry-service
 docker-compose up -d --build --force-recreate inventory-service
 docker-compose up -d --build --force-recreate catalog-service
+docker-compose up -d --build --force-recreate product-service
 
 docker logs service-registry
 

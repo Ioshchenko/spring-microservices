@@ -35,8 +35,10 @@ services:
       - emp-network
     links:
       - registry-service:registry-service
+      - cassandra:cassandra
     depends_on:
       - registry-service
+      - cassandra
 
   catalog-service:
     image: catalog-service
@@ -51,6 +53,11 @@ services:
       - registry-service:registry-service
     depends_on:
       - registry-service
+
+  cassandra:
+    image: "cassandra"
+    networks:
+      - emp-network
 
 networks:
   emp-network:
