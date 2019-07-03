@@ -1,8 +1,6 @@
 spring:
   application:
     name: productapi-service
-  zipkin:
-    base-url: http://localhost:9411/
   sleuth:
     sampler:
       probability: 1.0
@@ -25,4 +23,11 @@ eureka:
     service-url:
       defaultZone: ${EUREKA_URI:http://registry-service:8761/eureka}
     fetch-registry: true
+
+kafka:
+  group: cassandra
+  topic: stat
+  user: vzl94vf1
+  pswd: VgOZuGldD16LICAuljOaaoOX9XqqKcNL
+  servers: "velomobile-01.srvs.cloudkafka.com:9094,velomobile-02.srvs.cloudkafka.com:9094,velomobile-03.srvs.cloudkafka.com:9094"
 

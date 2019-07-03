@@ -25,7 +25,6 @@ public class ProductController {
     public List<Product> getAvailableProducts(@RequestParam(required = false) String uniqId,
                                               @RequestParam(required = false) String sku) {
         log.info("Get product by id:" + uniqId + " sku:" + sku);
-        productStatisticsService.increment(uniqId);
         return productService.getProducts(uniqId, sku);
     }
 
