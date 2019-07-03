@@ -6,9 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 @Repository
@@ -17,8 +15,9 @@ public class ProductRepository {
 
     public List<Product> getProducts() {
         try {
-            File file = new ClassPathResource("products.csv").getFile();
-            return new CsvToBeanBuilder<Product>(new FileReader(file))
+            InputStream inputStream = new ClassPathResource("products.csv").getInputStream();
+
+            return new CsvToBeanBuilder<Product>(new InputStreamReader(inputStream))
                     .withType(Product.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build()
